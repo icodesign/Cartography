@@ -6,13 +6,13 @@
 //  Copyright © 2017 Robert Böhnke. All rights reserved.
 //
 
-#if os(iOS) || os(tvOS)
+#if os(iOS) || os(tvOS) || os(visionOS)
 import UIKit
 
 public final class LayoutSupportProxy: SupportsHeightLayoutProxy, SupportsTopLayoutProxy, SupportsBottomLayoutProxy {
     public let context: Context
 
-    private let layoutGuide: UILayoutSupport
+    private let layoutGuide: NSLayoutYAxisAnchor
     public var item: AnyObject {
         return layoutGuide
     }

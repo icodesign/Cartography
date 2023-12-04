@@ -8,13 +8,13 @@
 
 import Foundation
 
-#if os(iOS) || os(tvOS)
+#if os(iOS) || os(tvOS) || os(visionOS)
     import UIKit
 
     public final class LayoutSupport: LayoutItem {
-        let layoutGuide : UILayoutSupport
+        let layoutGuide : NSLayoutYAxisAnchor
 
-        init(layoutGuide: UILayoutSupport) {
+        init(layoutGuide: NSLayoutYAxisAnchor) {
             self.layoutGuide = layoutGuide
         }
 
@@ -26,13 +26,13 @@ import Foundation
     public extension UIViewController {
         var car_topLayoutGuide : LayoutSupport {
             get {
-                return LayoutSupport(layoutGuide: self.topLayoutGuide)
+                return LayoutSupport(layoutGuide: self.view.safeAreaLayoutGuide.topAnchor)
             }
         }
         
         var car_bottomLayoutGuide : LayoutSupport {
             get {
-                return LayoutSupport(layoutGuide: self.bottomLayoutGuide)
+                return LayoutSupport(layoutGuide: self.view.safeAreaLayoutGuide.bottomAnchor)
             }
         }
     }
